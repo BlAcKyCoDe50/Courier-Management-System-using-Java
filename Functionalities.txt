@@ -1,0 +1,5 @@
+1.Bill generation according to delivery address->Done
+2.Invoice will be generated according to the Location and Weight.
+3.Create one function for the shipment Weight .
+4.Shipments for the Specific Locations within the Punjab.
+5.
