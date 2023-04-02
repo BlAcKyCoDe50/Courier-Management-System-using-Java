@@ -91,28 +91,29 @@ public class CourierManagementSystem {
     System.out.println("Enter the Destination of the Package:- ");
     String destination=scanner.next();
     
-        boolean destinationFound = false;
+        boolean destinationFound = true;
         for (int i=0;i<Locations.length;i++) {
             if (Locations[i]==destination) {
-                destinationFound = true;
+                destinationFound = false;
                 System.out.println(destinationFound);
                 break;
             }
         }
         System.out.println(destinationFound);
     
-        if (destinationFound) {
+        if (destinationFound==false) {
             System.out.println("Package added successfully!");
             int id = random.nextInt(2000);
             System.out.println("Your Tracking ID is: " + id);
-        } else {
+        } 
+        else {
             
             System.out.println("Sorry, our services are not available in " + destination);
             System.out.println("To send the Package to " + destination + " you have to pay extra charges:");
             System.out.println("NOTE: For other locations we need help of third-party courier services, so the charges may be high compared to domestic locations.");
     
             System.out.print("Enter the name of the Destination: ");
-            String newLocation = scanner.nextLine();
+            String newLocation = scanner.next();
     
             newid = random.nextInt(2000);
             System.out.println("Package added successfully!");
