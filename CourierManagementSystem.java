@@ -1,5 +1,7 @@
 import java.util.*;
-import java.util.Random;  
+import java.util.Random;
+
+// import javafx.scene.paint.Stop;  
 
 
 public class CourierManagementSystem {
@@ -7,27 +9,21 @@ public class CourierManagementSystem {
     static Random random = new Random();   
     static Integer id = random.nextInt(2000);
     static String name,Destinaion;
-    static String[] Locations= new String[6];
+    static String[] Locations= {"Jalandhar","Phagwara","Chandigarh","Amritsar","Ludhiana"};
     static String[] new_Locations= new String[1];
    static int ons,size;
     static Integer[] new_id= new Integer[size];
     static int newid;
+    static String[] newLocations = new String[1];
+    // static String[] Admin= new String[3];
+    
 
     static Double packageWeight,cost;
-   
-   
+    static String Admin[]={"Vishvajeet","Nikhil","Dipanshu"};
+    static Integer[] Admin_Pass={6267,72096,9111};
     private static String[] packages;
 
     public static void main(String[] args) {
-        
-        Locations[0]="Jalandhar";
-        Locations[1]="Phagwara";
-        Locations[3]="Chandigarh";
-        Locations[4]="Amritsar";
-        Locations[5]="Ludhiana";
-        
-        
-        
         Scanner scanner = new Scanner(System.in);
         int option;
         System.out.println("***************");
@@ -36,7 +32,7 @@ public class CourierManagementSystem {
         do {
             System.out.println("1. Create Shipment");
             System.out.println("2. Track Shipment");
-            System.out.println("3. View All Shipments");
+            System.out.println("3. View All Shipments  (For Admin)");
             System.out.println("4. View Invoice");
             System.out.println("5. Exit");
             System.out.println("6. Return to Main Menu");
@@ -53,7 +49,7 @@ public class CourierManagementSystem {
                     trackPackage();
                     break;
                 case 3:
-                    listPackages();
+                view_All_Shipmetns();
                     break;
                 case 4:
                     viewInvoice();
@@ -73,40 +69,44 @@ public class CourierManagementSystem {
         Scanner scanner = new Scanner(System.in);
     
         System.out.print("Enter the name of the Package: ");
-        String name = scanner.nextLine();
+        String name = scanner.next();
     
         System.out.print("Enter the weight of the Package in KG: ");
         double packageWeight = scanner.nextDouble();
+        // scanner.nextLine();
+
+    while (packageWeight <= 0 || packageWeight > 50) {
+    if (packageWeight == 0) {
+        System.out.println("You have entered an invalid weight. Please enter a valid weight.");
+        System.out.println("Enter the weight again: ");
+        packageWeight = scanner.nextDouble();
+    } else if (packageWeight > 50) {
+        System.out.println("Sorry! We cannot deliver packages above 50KG.");
+        System.out.println("Enter the weight again: ");
+        packageWeight = scanner.nextDouble();
         scanner.nextLine();
-        try {
-            if(packageWeight==0){
-               System.out.println("You have entered Invalid Weight Please enter Valid weight");
-            }
-        } catch (Exception e) {
-                
-        }
+    }
+}
     
-        if (packageWeight > 50) {
-            System.out.println("Sorry!!...We can't deliver the Packages Above 50KG");
-            return;
-        }
-    
-        System.out.print("Enter the Destination of the Package: ");
-        String destination = scanner.nextLine();
+    System.out.println("Enter the Destination of the Package:- ");
+    String destination=scanner.next();
     
         boolean destinationFound = false;
-        for (String location : Locations) {
-            if (destination.equals(location)) {
+        for (int i=0;i<Locations.length;i++) {
+            if (Locations[i]==destination) {
                 destinationFound = true;
+                System.out.println(destinationFound);
                 break;
             }
         }
+        System.out.println(destinationFound);
     
         if (destinationFound) {
             System.out.println("Package added successfully!");
             int id = random.nextInt(2000);
             System.out.println("Your Tracking ID is: " + id);
         } else {
+            
             System.out.println("Sorry, our services are not available in " + destination);
             System.out.println("To send the Package to " + destination + " you have to pay extra charges:");
             System.out.println("NOTE: For other locations we need help of third-party courier services, so the charges may be high compared to domestic locations.");
@@ -114,31 +114,21 @@ public class CourierManagementSystem {
             System.out.print("Enter the name of the Destination: ");
             String newLocation = scanner.nextLine();
     
-              newid = random.nextInt(2000);
+            newid = random.nextInt(2000);
             System.out.println("Package added successfully!");
             System.out.println("Your Tracking ID is: " + newid);
     
             // add the new location to the Locations array
-            String[] newLocations = new String[Locations.length + 1];
-            for (int i = 0; i < Locations.length; i++) {
-                newLocations[i] = Locations[i];
+            
+            for (int i = 0; i < newLocations.length; i++) {
+                newLocations[i]=newLocation;
             }
-            newLocations[newLocations.length - 1] = newLocation;
-            Locations = newLocations;
+            
         }
     }
     
 
             
-         
-
-
-
-        
-        
-         
-        
-
     //track Shipment 
     public static void trackPackage() {
         //    System.out.println("This Functionality is Coming Soon....:)");
@@ -157,10 +147,56 @@ public class CourierManagementSystem {
 
     
     //View all Shipments
-    public static void listPackages() {
-        for (int i = 0; i < packages.length; i++) {
-            System.out.println("Package " + (i + 1) + ": " + packages[i]);
+    public static void view_All_Shipmetns() {
+        boolean t1=false;
+        
+        System.out.println("Enter  Admin ID:- ");
+        String Admin_id=scanner.next();
+        if (t1==false) {
+            for (int i = 0; i < Admin.length;i++) {
+                if(Admin[i]==Admin_id)
+                    t1=true;
+            }
+        } 
+        else 
+        {
+            System.out.println("Invalid Admin ID...!!");
         }
+        
+        System.out.println("Enter  Admin Password:- ");
+        int adminpass=scanner.nextInt();
+        System.out.println(t1);
+        if (t1==false) {
+            for (int i = 0; i<Admin_Pass.length;i++) {
+                if(Admin_Pass[i]==adminpass)
+                    System.out.println("Login Successfull.....");
+                }
+        } else {
+            System.out.println("Invalid Password...!!");
+            System.out.println("Exiting.........");
+            System.exit(0);
+        }
+        
+        System.out.println("\nEnter the Destination Type:- \n1.Predefined Locations\n2.Custom Locations");
+        int loc_type=scanner.nextInt();
+        switch (loc_type) {
+            case 1:
+                for (int i = 0; i < Locations.length; i++) {
+                    System.out.println("*"+Locations[i]+"\n");
+                }
+                break;
+        
+            case 2:
+                for (int i = 0; i < newLocations.length; i++) {
+                    System.out.println(newLocations[i]);
+                }
+                break;
+            
+                default:
+                    System.out.println("Invalid Input...");
+                break;
+        }
+        
     }
 //View Invoice
     public static void viewInvoice() {
