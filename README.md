@@ -26,7 +26,10 @@ We welcome contributions to improve the system. Please create pull requests for 
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ## Author
-This project was created by [Your Name].
+This project was created by team of 3 Members.
+- Development of Code: Vishvajeet Singh Chouhan
+- Documentation & management: Dipanshu Raj
+- All types of Testing: Nikhil Mehta
 
 ## Additional Notes
 - The system could be expanded to include more features, such as:
