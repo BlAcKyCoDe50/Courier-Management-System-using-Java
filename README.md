@@ -22,9 +22,6 @@ This repository contains the source code for a simple Courier Management System 
 ## Contribution
 We welcome contributions to improve the system. Please create pull requests for any bug fixes or new features.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
 ## Author
 This project was created by team of 3 Members.
 - Development of Code: Vishvajeet Singh Chouhan
