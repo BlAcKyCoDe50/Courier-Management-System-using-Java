@@ -35,6 +35,3 @@ This project was created by team of 3 Members.
 - Payment processing (not applicable on this project)
 - More detailed tracking information
 
-## Reporting
-
-This is a basic README template that you can customize to fit your project. Remember to include all relevant information about your project, such as features, prerequisites, how to run, and contribution guidelines.
